@@ -7,8 +7,9 @@
 'use strict';
 
 var $ = require('jquery');
-var Core = require('./src/core');
 var Template = require('nd-template');
+
+var Core = require('./src/core');
 
 // 依赖样式 alice/poptip@1.1.1
 // require('./tip.css');

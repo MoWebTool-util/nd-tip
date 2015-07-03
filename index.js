@@ -46,7 +46,7 @@ var Tip = Core.extend({
     },
 
     // 颜色 [yellow|blue|white]
-    theme: 'yellow',
+    theme: null,
 
     // 当弹出层显示在屏幕外时，是否自动转换浮层位置
     inViewport: false

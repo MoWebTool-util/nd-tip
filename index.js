@@ -1,14 +1,14 @@
 /**
- * Description: index.js
- * Author: crossjs <liwenfu@crossjs.com>
- * Date: 2014-12-19 17:42:52
+ * @module Tip
+ * @author crossjs <liwenfu@crossjs.com>
  */
 
 'use strict';
 
 var $ = require('jquery');
-var Core = require('./src/core');
 var Template = require('nd-template');
+
+var Core = require('./src/core');
 
 // 依赖样式 alice/poptip@1.1.1
 // require('./tip.css');
@@ -45,7 +45,7 @@ var Tip = Core.extend({
     },
 
     // 颜色 [yellow|blue|white]
-    theme: 'yellow',
+    theme: null,
 
     // 当弹出层显示在屏幕外时，是否自动转换浮层位置
     inViewport: false

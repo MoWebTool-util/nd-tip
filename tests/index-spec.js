@@ -1,7 +1,7 @@
 'use strict';
 
 var expect = require('expect.js');
-var $ = require('jquery');
+var $ = require('nd-jquery');
 var Tip = require('../index');
 var tip, trigger;
 var CONTENT = '_content_';

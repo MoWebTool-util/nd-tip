@@ -1,6 +1,6 @@
 {
   "name": "nd-tip",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "description": "提示框组件，专注于带箭头的气泡框显示、隐藏、动画等交互功能。",
   "keywords": [],
   "homepage": "https://github.com/ndfront/nd-tip",

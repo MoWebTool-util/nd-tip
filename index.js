@@ -65,28 +65,48 @@ var Tip = Core.extend({
       return;
     }
     var ap = '' + this._originArrowPosition,
-        scrollTop = $(window).scrollTop(),
-        viewportHeight = $(window).outerHeight(),
-        elemHeight = this.element.height() + this.get('distance'),
-        triggerTop = this.get('trigger').offset().top,
-        triggerHeight = this.get('trigger').height(),
-        arrowMap = {
-          '1': 5,
-          '5': 1,
-          '7': 11,
-          '11': 7
-        };
+      scrollTop = $(window).scrollTop(),
+      scrollLeft = $(window).scrollLeft(),
+      viewportHeight = $(window).outerHeight(),
+      viewportWidth = $(window).outerWidth(),
+      elemHeight = this.element.height() + this.get('distance'),
+      elemWidth = this.element.width() + this.get('distance'),
+      triggerTop = this.get('trigger').offset().top,
+      triggerLeft = this.get('trigger').offset().left,
+      triggerHeight = this.get('trigger').height(),
+      triggerWidth = this.get('trigger').width(),
+      widthMap = {
+        '10': '2',
+        '2': '10',
+        '1': '11',
+        '11': '1',
+        '7': '5',
+        '5': '7'
+      },
+      heightMap = {
+        '1': '5',
+        '5': '1',
+        '7': '11',
+        '11': '7'
+      }
+    if ((ap === '10'||ap === '7' || ap === '11') && (triggerLeft + triggerWidth > scrollLeft + viewportWidth - elemWidth)) {
+      // tip 溢出屏幕右边
+      ap = widthMap[ap]
+    } else if (( ap === '1' || ap === '5' || ap === '2') && (triggerLeft < scrollLeft + elemWidth)) {
+      // tip 溢出屏幕左边
+      ap = widthMap[ap]
+    }
 
     if ((ap === '11' || ap === '1') && (triggerTop + triggerHeight > scrollTop + viewportHeight - elemHeight)) {
       // tip 溢出屏幕下方
-      this.set('arrowPosition', arrowMap[ap]);
+      ap = heightMap[ap]
     } else if ((ap === '7' || ap === '5') && (triggerTop < scrollTop + elemHeight)) {
       // tip 溢出屏幕上方
-      this.set('arrowPosition', arrowMap[ap]);
-    } else {
-      // 复原
-      this.set('arrowPosition', this._originArrowPosition);
+      ap = heightMap[ap]
     }
+
+
+    this.set('arrowPosition', +ap);
   },
 
   // 用于 set 属性后的界面更新
